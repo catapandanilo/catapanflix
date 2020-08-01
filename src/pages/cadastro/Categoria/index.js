@@ -3,13 +3,27 @@ import PageDefault from '../../../components/PageDefault'
 import { Link } from 'react-router-dom'
 
 function CadastroCategoria () {
-  const [categorias, setCategorias] = useState(['Teste'])
+  const [categorias, setCategorias] = useState([])
   const valoresIniciais = {
     nome: 'Categoria Inicial',
     descricao: 'Descrição Inicial',
     cor: '#000',
   }
   const [values, setValues] = useState(valoresIniciais)
+
+  function setValue (key, value) {
+    setValues({
+      ...values,
+      [key]: value
+    })
+  }
+
+  function handleChange (infoDoEvento) {
+    setValue(
+      infoDoEvento.target.getAttribute('name'), 
+      infoDoEvento.target.value
+    )
+  }
 
   return (
     <PageDefault>
@@ -28,10 +42,9 @@ function CadastroCategoria () {
             Nome da Categoria:
             <input
               type = "text"
+              name = "nome"
               value = { values.nome }
-              onChange = { (infoDoEvento) => {
-                setValues (infoDoEvento.target.value)
-              }}
+              onChange = { handleChange }
             />
           </label>
         </div>
@@ -41,10 +54,9 @@ function CadastroCategoria () {
             Descrição:
             <textarea
               type = "text"
+              name = "descricao"
               value = { values.descricao }
-              onChange = { (infoDoEvento) => {
-                setValues (infoDoEvento.target.value)
-              }}
+              onChange = { handleChange }
             />
           </label>
         </div>
@@ -54,10 +66,9 @@ function CadastroCategoria () {
             Cor:
             <input
               type = "color"
+              name = "cor"
               value = { values.cor }
-              onChange = { (infoDoEvento) => {
-                setValues (infoDoEvento.target.value)
-              }}
+              onChange = { handleChange }
             />
           </label>
         </div>
@@ -71,7 +82,7 @@ function CadastroCategoria () {
         { categorias.map((categoria, indice) => {
           return (
             <li key = { `${categoria} ${indice}` } >
-              { categoria }
+              { categoria.nome }
             </li>
           )
         })}
