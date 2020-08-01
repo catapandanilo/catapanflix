@@ -4,29 +4,63 @@ import { Link } from 'react-router-dom'
 
 function CadastroCategoria () {
   const [categorias, setCategorias] = useState(['Teste'])
-  const [nomeDaCategoria, setNomeDaCategoria] = useState('Filmes')
+  const valoresIniciais = {
+    nome: 'Categoria Inicial',
+    descricao: 'Descrição Inicial',
+    cor: '#000',
+  }
+  const [values, setValues] = useState(valoresIniciais)
 
   return (
     <PageDefault>
-      <h1> Cadastro de Categoria: { nomeDaCategoria } </h1>
+      <h1> Cadastro de Categoria: { values.nome } </h1>
 
       <form onSubmit = { function handleSubmit (infoDoEvento) {
         infoDoEvento.preventDefault()
         setCategorias([
           ...categorias,
-          nomeDaCategoria
+          values
         ])
       }}>
-        <label>
-          Nome da Categoria:
-          <input
-            type = "text"
-            value = { nomeDaCategoria }
-            onChange = { (infoDoEvento) => {
-              setNomeDaCategoria (infoDoEvento.target.value)
-            }}
-          />
-        </label>
+
+        <div>
+          <label>
+            Nome da Categoria:
+            <input
+              type = "text"
+              value = { values.nome }
+              onChange = { (infoDoEvento) => {
+                setValues (infoDoEvento.target.value)
+              }}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Descrição:
+            <textarea
+              type = "text"
+              value = { values.descricao }
+              onChange = { (infoDoEvento) => {
+                setValues (infoDoEvento.target.value)
+              }}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Cor:
+            <input
+              type = "color"
+              value = { values.cor }
+              onChange = { (infoDoEvento) => {
+                setValues (infoDoEvento.target.value)
+              }}
+            />
+          </label>
+        </div>
 
         <button>
           Cadastrar
