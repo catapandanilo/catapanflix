@@ -3,12 +3,13 @@ import PageDefault from '../../../components/PageDefault'
 import { Link } from 'react-router-dom'
 
 function CadastroCategoria () {
-  const [categorias, setCategorias] = useState([])
   const valoresIniciais = {
-    nome: 'Categoria Inicial',
-    descricao: 'Descrição Inicial',
-    cor: '#000',
+    nome: '',
+    descricao: '',
+    cor: '',
   }
+
+  const [categorias, setCategorias] = useState([])
   const [values, setValues] = useState(valoresIniciais)
 
   function setValue (key, value) {
@@ -19,9 +20,10 @@ function CadastroCategoria () {
   }
 
   function handleChange (infoDoEvento) {
+    const { getAttribute, value } = infoDoEvento.target
     setValue(
-      infoDoEvento.target.getAttribute('name'), 
-      infoDoEvento.target.value
+      getAttribute('name'), 
+      value
     )
   }
 
@@ -35,6 +37,8 @@ function CadastroCategoria () {
           ...categorias,
           values
         ])
+
+        setValues(valoresIniciais)
       }}>
 
         <div>
