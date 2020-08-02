@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Input = styled.input`
-
 `;
 
 function FormField({
@@ -36,15 +35,14 @@ function FormField({
 FormField.defaultProps = {
   type: 'text',
   value: '',
-  onChange: () => {},
 };
 
-FormField.prototype = {
+FormField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default FormField;
