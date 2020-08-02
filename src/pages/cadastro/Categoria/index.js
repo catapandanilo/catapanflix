@@ -30,23 +30,14 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      setCategorias([
-        ...categorias,
-        {
-          id: 1,
-          nome: 'Front End',
-          descricao: 'Descrição',
-          cor: '#6BD1FF',
-        },
-        {
-          id: 2,
-          nome: 'Back End',
-          descricao: 'Descrição',
-          cor: '#00C86F',
-        },
-      ]);
-    }, 4 * 1000);
+    const url = 'http://localhost:8080/categorias';
+    fetch(url)
+      .then(async (respostaServidor) => {
+        const respostaServidorJson = await respostaServidor.json();
+        setCategorias([
+          ...respostaServidorJson,
+        ]);
+      });
   }, [
 
   ]);
