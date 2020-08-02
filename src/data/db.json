@@ -2,30 +2,32 @@
   "categorias": [
     {
       "id": 1,
-      "titulo": "Front End",
-      "descricao": "Descrição",
+      "nome": "TDD",
+      "descricao": "Test Domain Designer",
       "cor": "#6BD1FF"
     },
     {
       "id": 2,
-      "titulo": "Back End",
-      "descricao": "Descrição",
+      "nome": "DDD",
+      "descricao": "Domain Driven Design",
       "cor": "#00C86F"
     },
     {
       "id": 3,
-      "titulo": "Data Science e Inteligência Artificial",
+      "nome": "Testes Unitários",
+      "descricao": "Testes Unitários",
       "cor": "#9cd33b"
     },
     {
       "id": 4,
-      "titulo": "Filmes",
-      "descricao": "Descrição",
+      "nome": "Código Limpo",
+      "descricao": "Código Limpo",
       "cor": "orange"
     },
     {
       "id": 5,
-      "titulo": "Games",
+      "nome": "Designer Patterns",
+      "descricao": "Designer Patterns",
       "cor": "red"
     }
   ]
