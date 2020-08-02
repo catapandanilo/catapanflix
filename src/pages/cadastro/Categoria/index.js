@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -28,6 +28,28 @@ function CadastroCategoria() {
       value,
     );
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCategorias([
+        ...categorias,
+        {
+          id: 1,
+          nome: 'Front End',
+          descricao: 'Descrição',
+          cor: '#6BD1FF',
+        },
+        {
+          id: 2,
+          nome: 'Back End',
+          descricao: 'Descrição',
+          cor: '#00C86F',
+        },
+      ]);
+    }, 4 * 1000);
+  }, [
+
+  ]);
 
   return (
     <PageDefault>
@@ -76,6 +98,14 @@ function CadastroCategoria() {
           Cadastrar
         </Button>
       </form>
+
+      {
+        categorias.length === 0 && (
+          <div>
+            Carregando...
+          </div>
+        )
+      }
 
       <ul>
         { categorias.map((categoria) => (
