@@ -30,8 +30,10 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const url = 'http://localhost:8080/categorias';
-    fetch(url)
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://catapanflix.herokuapp.com/categorias';
+    fetch(URL)
       .then(async (respostaServidor) => {
         const respostaServidorJson = await respostaServidor.json();
         console.log(respostaServidorJson);
