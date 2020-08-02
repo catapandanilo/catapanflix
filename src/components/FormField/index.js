@@ -1,19 +1,40 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function FormField ({ label, type, name, value, onChange }) {
+function FormField({
+  label, type, name, value, onChange,
+}) {
+  const fieldId = `id_${name}`;
   return (
     <div>
-    <label>
-      { label }
-      <input
-        type = { type }
-        name = { name }
-        value = { value }
-        onChange = { onChange }
-      />
-    </label>
-  </div>
-  )
+      <label
+        htmlFor={fieldId}
+      >
+        { label }
+        :
+        <input
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
+      </label>
+    </div>
+  );
 }
 
-export default FormField
+FormField.defaultProps = {
+  type: 'text',
+  value: '',
+  onChange: () => {},
+};
+
+FormField.prototype = {
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
+export default FormField;
