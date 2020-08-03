@@ -1,21 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Logo from '../../assets/img/Logo.png'
-import './Menu.css'
-import Button from '../Button'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/img/Logo.png';
+import './Menu.css';
+import Button from '../Button';
 
-function Menu () {
+function Menu() {
   return (
     <nav className="Menu">
       <Link to="/">
-        <img className="Logo" src={Logo} alt="Catapanflix logo"/>
+        <img className="Logo" src={Logo} alt="Catapanflix logo" />
       </Link>
 
-      <Button as={ Link } to="/cadastro/video">
+      <Button as={Link} to="/cadastro/video" newVideo>
         Novo vídeo
       </Button>
     </nav>
-  )
+  );
 }
 
-export default Menu
+export default Menu;
