@@ -4,6 +4,7 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
+import categoriesRepository from '../../../repositories/categorias';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -43,6 +44,13 @@ function CadastroCategoria() {
           ...categorias,
           values,
         ]);
+
+        console.log('values', values);
+        categoriesRepository.create({
+          titulo: values.nome,
+          descricao: values.descricao,
+          cor: values.cor,
+        });
 
         clearForm();
       }}
@@ -87,7 +95,7 @@ function CadastroCategoria() {
 
       <ul>
         { categorias.map((categoria) => (
-          <li key={`${categoria.titulo}`}>
+          <li key={`${categoria.nome}`}>
             { categoria.titulo }
           </li>
         ))}
